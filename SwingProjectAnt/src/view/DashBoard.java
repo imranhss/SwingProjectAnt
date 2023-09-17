@@ -5,6 +5,7 @@
 package view;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +18,25 @@ public class DashBoard extends javax.swing.JFrame {
      */
     public DashBoard() {
         initComponents();
+    }
+
+    public float getSalesTotalPrice() {
+        
+        float quantity = Float.parseFloat(txtSalesQuantity.getText().trim());
+        float unitPrice = Float.parseFloat(txtSalesUnitPrice.getText().trim());
+        float totalPrice = quantity * unitPrice;
+        
+        return totalPrice;
+    }
+    
+    public float getActualPrice() {
+        
+        float totalPrice = getSalesTotalPrice();
+        float discount= Float.parseFloat(txtSalesDiscount.getText().trim());
+        
+        float actualPrice= totalPrice -(totalPrice*discount/100);
+        
+        return actualPrice;
     }
 
     /**
@@ -38,7 +58,30 @@ public class DashBoard extends javax.swing.JFrame {
         home = new javax.swing.JTabbedPane();
         jLabel2 = new javax.swing.JLabel();
         sales = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtSid = new javax.swing.JTextField();
+        txtSalesProductName = new javax.swing.JTextField();
+        txtSalesUnitPrice = new javax.swing.JTextField();
+        txtSalesQuantity = new javax.swing.JTextField();
+        txtSalesTotalPrice = new javax.swing.JTextField();
+        txtSalesDiscount = new javax.swing.JTextField();
+        txtSalesActualPrice = new javax.swing.JTextField();
+        txtSalesCashReceive = new javax.swing.JTextField();
+        txtSalesDueAmount = new javax.swing.JTextField();
+        comboSalesCustomerName = new javax.swing.JComboBox<>();
         purchase = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -98,8 +141,112 @@ public class DashBoard extends javax.swing.JFrame {
 
         menu.addTab("tab1", home);
 
-        jLabel3.setText("Tab 2");
-        sales.addTab("tab1", jLabel3);
+        jPanel5.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Wide Latin", 3, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Sales");
+        jPanel5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 59));
+
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setText("SID");
+        jPanel6.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 80, -1));
+
+        jLabel5.setText("Product Name");
+        jPanel6.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+
+        jLabel6.setText("Unit Price");
+        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+
+        jLabel7.setText("Quantity");
+        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+
+        jLabel8.setText("Total Price");
+        jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+
+        jLabel9.setText("Discount");
+        jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+
+        jLabel10.setText("Actual Price");
+        jPanel6.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
+
+        jLabel11.setText("Cash Received");
+        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+
+        jLabel12.setText("Due Amount");
+        jPanel6.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
+
+        jLabel13.setText("Customer Name");
+        jPanel6.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, -1, -1));
+
+        txtSid.setEditable(false);
+        jPanel6.add(txtSid, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 120, -1));
+        jPanel6.add(txtSalesProductName, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 120, -1));
+
+        txtSalesUnitPrice.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtSalesUnitPriceFocusLost(evt);
+            }
+        });
+        jPanel6.add(txtSalesUnitPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 120, -1));
+
+        txtSalesQuantity.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtSalesQuantityFocusLost(evt);
+            }
+        });
+        jPanel6.add(txtSalesQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 120, -1));
+
+        txtSalesTotalPrice.setEditable(false);
+        jPanel6.add(txtSalesTotalPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 120, -1));
+
+        txtSalesDiscount.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtSalesDiscountFocusLost(evt);
+            }
+        });
+        jPanel6.add(txtSalesDiscount, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 120, -1));
+
+        txtSalesActualPrice.setEditable(false);
+        jPanel6.add(txtSalesActualPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 120, -1));
+
+        txtSalesCashReceive.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtSalesCashReceiveFocusLost(evt);
+            }
+        });
+        jPanel6.add(txtSalesCashReceive, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 120, -1));
+
+        txtSalesDueAmount.setEditable(false);
+        txtSalesDueAmount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSalesDueAmountActionPerformed(evt);
+            }
+        });
+        jPanel6.add(txtSalesDueAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 120, -1));
+
+        comboSalesCustomerName.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rajib", "Limon", "Mamun", "Hasan", "Tonmoy" }));
+        jPanel6.add(comboSalesCustomerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 130, -1));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        sales.addTab("tab1", jPanel4);
 
         menu.addTab("tab2", sales);
 
@@ -137,7 +284,7 @@ public class DashBoard extends javax.swing.JFrame {
 
     private void btnHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHomeMouseClicked
         // TODO add your handling code here:
-        
+
         menu.setSelectedIndex(0);
     }//GEN-LAST:event_btnHomeMouseClicked
 
@@ -160,6 +307,51 @@ public class DashBoard extends javax.swing.JFrame {
         // TODO add your handling code here:
         btnHome.setBackground(Color.WHITE);
     }//GEN-LAST:event_btnHomeMouseExited
+
+    private void txtSalesDueAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalesDueAmountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSalesDueAmountActionPerformed
+
+    private void txtSalesQuantityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSalesQuantityFocusLost
+        // TODO add your handling code here:
+        // get Total Price from method 
+        float totalPrice = getSalesTotalPrice();
+
+        txtSalesTotalPrice.setText(totalPrice + "");
+    }//GEN-LAST:event_txtSalesQuantityFocusLost
+
+    private void txtSalesUnitPriceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSalesUnitPriceFocusLost
+        // TODO add your handling code here:
+
+        if (txtSalesUnitPrice.getText().trim().isEmpty()) {
+
+            JOptionPane.showMessageDialog(rootPane, "Quantity and Unit price cannot be empty");
+            txtSalesUnitPrice.setText(0 + "");
+            txtSalesUnitPrice.requestFocus();
+
+        }
+
+
+    }//GEN-LAST:event_txtSalesUnitPriceFocusLost
+
+    private void txtSalesDiscountFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSalesDiscountFocusLost
+        // TODO add your handling code here:
+        
+        
+        float actualPrice= getActualPrice();
+        
+        txtSalesActualPrice.setText(actualPrice+"");
+    }//GEN-LAST:event_txtSalesDiscountFocusLost
+
+    private void txtSalesCashReceiveFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSalesCashReceiveFocusLost
+        // TODO add your handling code here:
+        float actualPrice= getActualPrice();
+        float cashReceived= Float.parseFloat(txtSalesCashReceive.getText().trim());
+        
+        float dueAmount= actualPrice-cashReceived;
+        
+        txtSalesDueAmount.setText(dueAmount+"");
+    }//GEN-LAST:event_txtSalesCashReceiveFocusLost
 
     /**
      * @param args the command line arguments
@@ -200,18 +392,41 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnPurchase;
     private javax.swing.JButton btnSales;
+    private javax.swing.JComboBox<String> comboSalesCustomerName;
     private javax.swing.JTabbedPane home;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JTabbedPane jTabbedPane11;
     private javax.swing.JTabbedPane jTabbedPane12;
     private javax.swing.JTabbedPane menu;
     private javax.swing.JTabbedPane purchase;
     private javax.swing.JTabbedPane sales;
+    private javax.swing.JTextField txtSalesActualPrice;
+    private javax.swing.JTextField txtSalesCashReceive;
+    private javax.swing.JTextField txtSalesDiscount;
+    private javax.swing.JTextField txtSalesDueAmount;
+    private javax.swing.JTextField txtSalesProductName;
+    private javax.swing.JTextField txtSalesQuantity;
+    private javax.swing.JTextField txtSalesTotalPrice;
+    private javax.swing.JTextField txtSalesUnitPrice;
+    private javax.swing.JTextField txtSid;
     // End of variables declaration//GEN-END:variables
 }
